@@ -11,16 +11,21 @@ form.addEventListener('submit', onSubmit);
 function saveForm() {
     const formData = {
         email: emailInput.value,
-        massage: messageInput.value
+        message: messageInput.value
     };
     localStorage.setItem(CONST_CURRENT_TIME, JSON.stringify(formData));
 }
 
 function onSubmit(event) {
     event.preventDefault();
+    const formData = {
+        email: emailInput.value,
+        message: messageInput.value
+    };
+    localStorage.removeItem(CONST_CURRENT_TIME);
     emailInput.value = '';
     messageInput.value = '';
-    localStorage.removeItem(CONST_CURRENT_TIME);
+    console.log(formData);
 }
 
 function dataLocalStorage() {
@@ -31,7 +36,9 @@ function dataLocalStorage() {
             messageInput.value = formData.message;
         }
 }
+
 dataLocalStorage();
+
 
 
 
